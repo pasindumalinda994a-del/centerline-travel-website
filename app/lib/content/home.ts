@@ -238,7 +238,7 @@ export const stays = {
   title: "Where You Stay Becomes\n*Part of the Journey*",
   description:
     "Wake up beside the ocean, among tea-covered hills, or in a home where the host knows the best places nearby.",
-  cta: { href: "#stays", label: "Find Your Stay" },
+  cta: { href: "/explore?category=stays", label: "Find Your Stay" },
   image: "/images/home/figma/stays-hero.jpg",
   features: [
     {
@@ -264,7 +264,7 @@ export const rentals = {
   title: "Your Journey.\n*Your Route.* Your Ride.",
   description:
     "Find the vehicles and gear you need for a coastal road trip, mountain adventure, or wild camping journey.",
-  cta: { href: "#rentals", label: "See All Rentals" },
+  cta: { href: "/explore?category=vehicles", label: "See All Rentals" },
   items: [
     { title: "Cars", image: "/images/home/figma/rental-extra-02.jpg", label: "Island roads", price: "From $35/day" },
     { title: "Tuk Tuks", image: "/images/home/figma/rental-extra-05.jpg", label: "Local classic", price: "From $15/day" },
@@ -310,7 +310,7 @@ export const localGuides = {
   title: "Experts Who Know\n*Every Path*",
   description:
     "Go beyond guidebooks with people who know the trails, villages, wildlife, food, and hidden corners of Sri Lanka.",
-  cta: { href: "#guides", label: "Find a Guide" },
+  cta: { href: "/explore?category=guides", label: "Find a Guide" },
   items: [
     {
       role: "Hiking Guide",
@@ -510,7 +510,7 @@ export const finalCta = {
   title: "Go Somewhere\n*Worth Remembering*",
   description:
     "Find the places, people, and experiences that make Sri Lanka more than a destination.",
-  primary: { href: "#destinations", label: "Explore Sri Lanka" },
+  primary: { href: "/explore", label: "Explore Sri Lanka" },
   image: "/images/home/figma/hero-bg.jpg",
   watermark: "Centreline",
 } as const;

@@ -12,7 +12,8 @@ export function SearchBar() {
       id="explore"
       data-hero-search
       className="w-full max-w-[460px] rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl"
-      action="#destinations"
+      action="/explore"
+      method="get"
       role="search"
     >
       <div className="grid grid-cols-2 gap-3">
@@ -22,7 +23,7 @@ export function SearchBar() {
           </label>
           <input
             id="hero-query"
-            name="query"
+            name="q"
             type="search"
             placeholder="Hotel, vehicle, guide…"
             className={fieldClass}
@@ -38,11 +39,21 @@ export function SearchBar() {
             name="category"
             className={`${fieldClass} pr-9 [&>option]:text-foreground`}
           >
-            {search.categories.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
+            {search.categories.map((option) => {
+              const value =
+                option === "Hotel"
+                  ? "stays"
+                  : option === "Vehicle"
+                    ? "vehicles"
+                    : option === "Guide"
+                      ? "guides"
+                      : "guides";
+              return (
+                <option key={option} value={value}>
+                  {option}
+                </option>
+              );
+            })}
           </select>
           <ChevronDownIcon className="pointer-events-none absolute right-3.5 bottom-3.5 size-4 text-white/60" />
         </div>

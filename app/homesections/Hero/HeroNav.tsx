@@ -65,7 +65,7 @@ export function HeroNav() {
         </details>
 
         <div className="hidden sm:block">
-          <CtaButton href="#destinations">
+          <CtaButton href="/explore">
             Explore
           </CtaButton>
         </div>
