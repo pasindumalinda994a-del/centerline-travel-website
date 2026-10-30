@@ -131,6 +131,16 @@ export function WavesIcon(props: IconProps) {
   );
 }
 
+/** Material Symbols Outlined — landscape */
+export function LandscapeIcon(props: IconProps) {
+  return (
+    <MaterialIcon
+      d="m40-240 240-320 195 260h325L560-619 435-453l-38-50 163-217 360 480H40Zm510-60Zm-390 0h240L280-460 160-300Zm0 0h240-240Z"
+      {...props}
+    />
+  );
+}
+
 /** Material Symbols Outlined — explore */
 export function ExploreIcon(props: IconProps) {
   return (

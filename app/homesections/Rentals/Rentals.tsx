@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
@@ -92,12 +92,9 @@ export function Rentals() {
             title={rentals.title}
             description={rentals.description}
             cta={
-              <>
-                <Button href={rentals.cta.href} variant="dark">
-                  {rentals.cta.label}
-                </Button>
-                <ArrowCircle href={rentals.cta.href} />
-              </>
+              <CtaButton href={rentals.cta.href} variant="dark">
+                {rentals.cta.label}
+              </CtaButton>
             }
           />
         </div>

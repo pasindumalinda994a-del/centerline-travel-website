@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { hero, navLinks } from "@/app/lib/content/home";
 import { MenuIcon } from "./icons";
 
@@ -63,12 +64,11 @@ export function HeroNav() {
           </ul>
         </details>
 
-        <a
-          href="#destinations"
-          className="text-body hidden rounded-full bg-brand px-5 py-2.5 font-medium text-white transition-opacity hover:opacity-90 sm:inline-flex"
-        >
-          Explore
-        </a>
+        <div className="hidden sm:block">
+          <CtaButton href="#destinations">
+            Explore
+          </CtaButton>
+        </div>
       </div>
     </nav>
   );

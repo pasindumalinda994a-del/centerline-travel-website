@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { localGuides } from "@/app/lib/content/home";
@@ -51,12 +50,9 @@ export function LocalGuides() {
         title={localGuides.title}
         description={localGuides.description}
         cta={
-          <>
-            <Button href={localGuides.cta.href} variant="dark">
-              {localGuides.cta.label}
-            </Button>
-            <ArrowCircle href={localGuides.cta.href} />
-          </>
+          <CtaButton href={localGuides.cta.href} variant="dark">
+            {localGuides.cta.label}
+          </CtaButton>
         }
       />
 

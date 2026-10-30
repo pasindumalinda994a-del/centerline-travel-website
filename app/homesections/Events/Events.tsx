@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { CountUp } from "@/app/components/ui/CountUp";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { RevealHeading } from "@/app/components/ui/RevealHeading";
@@ -103,9 +103,9 @@ export function Events() {
           <p className="text-body max-w-[40ch] leading-relaxed text-white/80">
             {events.description}
           </p>
-          <Button href={events.cta.href} variant="inverse">
+          <CtaButton href={events.cta.href} variant="inverse" arrowLight>
             {events.cta.label}
-          </Button>
+          </CtaButton>
         </div>
       </div>
     </section>

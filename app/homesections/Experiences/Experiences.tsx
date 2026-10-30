@@ -4,7 +4,7 @@ import Image from "next/image";
 import type { SVGProps } from "react";
 import { useRef } from "react";
 import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import {
   PetsIcon,
   RestaurantIcon,
@@ -88,12 +88,9 @@ export function Experiences() {
         title={experiences.title}
         description={experiences.description}
         cta={
-          <>
-            <Button href={experiences.cta.href} variant="dark">
-              {experiences.cta.label}
-            </Button>
-            <ArrowCircle href={experiences.cta.href} />
-          </>
+          <CtaButton href={experiences.cta.href} variant="dark">
+            {experiences.cta.label}
+          </CtaButton>
         }
       />
 

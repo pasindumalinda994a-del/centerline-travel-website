@@ -1,3 +1,4 @@
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { search } from "@/app/lib/content/home";
 import { ChevronDownIcon } from "./icons";
 
@@ -64,12 +65,13 @@ export function SearchBar() {
           <ChevronDownIcon className="pointer-events-none absolute right-3.5 bottom-3.5 size-4 text-white/60" />
         </div>
 
-        <button
+        <CtaButton
+          as="button"
           type="submit"
-          className="text-body col-span-2 h-11 rounded-full bg-brand font-medium text-white transition-colors hover:bg-brand/90"
+          className="col-span-2 justify-end"
         >
           Explore Now
-        </button>
+        </CtaButton>
       </div>
     </form>
   );

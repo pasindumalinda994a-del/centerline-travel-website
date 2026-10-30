@@ -12,7 +12,20 @@ import {
 } from "@/app/lib/gsap";
 import { HeroBackground } from "./HeroBackground";
 import { HeroNav } from "./HeroNav";
+import {
+  LandscapeIcon,
+  PetsIcon,
+  TempleHinduIcon,
+  WavesIcon,
+} from "./icons";
 import { SearchBar } from "./SearchBar";
+
+const chipIcons = {
+  Coast: WavesIcon,
+  Hills: LandscapeIcon,
+  Wildlife: PetsIcon,
+  Culture: TempleHinduIcon,
+} as const;
 
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
@@ -74,7 +87,7 @@ export function Hero() {
           <HeroNav />
 
           <div className="grid grid-cols-1 items-end gap-8 pb-2 lg:grid-cols-12 lg:gap-10">
-            <div className="flex min-w-0 flex-col items-start gap-5 lg:col-span-7">
+            <div className="@container flex min-w-0 flex-col items-start gap-5 lg:col-span-7">
               <Eyebrow light data-hero-fade>
                 {hero.eyebrow}
               </Eyebrow>
@@ -83,13 +96,13 @@ export function Hero() {
                 trigger="load"
                 delay={0.12}
                 mutedClassName="text-white/55"
-                className="text-h1 max-w-[14ch] leading-[1.02] font-medium tracking-[-0.03em] text-white"
+                className="max-w-[14ch] text-[length:min(var(--text-display),13.8cqi)] leading-[0.96] font-normal tracking-[-0.04em] text-white"
               >
                 {hero.title}
               </RevealHeading>
               <p
                 data-hero-fade
-                className="text-body max-w-[38ch] leading-relaxed text-white/80"
+                className="text-body max-w-[32ch] text-left leading-relaxed text-white/90"
               >
                 {hero.description}
               </p>
@@ -98,16 +111,20 @@ export function Hero() {
                 className="flex flex-wrap gap-2"
                 aria-label="Explore by landscape"
               >
-                {hero.chips.map((chip) => (
-                  <li key={chip}>
-                    <a
-                      href="#destinations"
-                      className="text-caption inline-flex rounded-full bg-black/30 px-4 py-2 font-medium text-white backdrop-blur-md transition-colors hover:bg-black/50"
-                    >
-                      {chip}
-                    </a>
-                  </li>
-                ))}
+                {hero.chips.map((chip) => {
+                  const Icon = chipIcons[chip];
+                  return (
+                    <li key={chip}>
+                      <a
+                        href="#destinations"
+                        className="text-caption inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-medium text-white backdrop-blur-xl transition-colors hover:bg-white/20"
+                      >
+                        <Icon className="size-4 shrink-0 opacity-90" />
+                        {chip}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { CountUp } from "@/app/components/ui/CountUp";
 import { CheckIcon, StarIcon } from "@/app/components/ui/icons";
 import { Marquee } from "@/app/components/ui/Marquee";
@@ -132,12 +131,13 @@ export function Testimonials() {
             </div>
             <div>
               <p className="text-body text-muted">Ready to plan your own journey?</p>
-              <div className="mt-3 flex items-center gap-2">
-                <Button href={testimonials.rating.cta.href} variant="dark">
-                  {testimonials.rating.cta.label}
-                </Button>
-                <ArrowCircle href={testimonials.rating.cta.href} />
-              </div>
+              <CtaButton
+                href={testimonials.rating.cta.href}
+                variant="dark"
+                className="mt-3"
+              >
+                {testimonials.rating.cta.label}
+              </CtaButton>
             </div>
           </div>
 

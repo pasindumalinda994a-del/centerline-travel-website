@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { CountUp } from "@/app/components/ui/CountUp";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { RevealHeading } from "@/app/components/ui/RevealHeading";
@@ -116,9 +116,9 @@ export function About() {
             <p className="text-body max-w-[36ch] leading-relaxed text-muted">
               {about.description}
             </p>
-            <Button href={about.cta.href} className="w-fit">
+            <CtaButton href={about.cta.href} className="w-fit">
               {about.cta.label}
-            </Button>
+            </CtaButton>
           </div>
 
           <div className="flex items-center gap-3">

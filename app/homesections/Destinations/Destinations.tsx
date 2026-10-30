@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { destinations } from "@/app/lib/content/home";
@@ -94,12 +94,9 @@ export function Destinations() {
         title={destinations.title}
         description={destinations.description}
         cta={
-          <>
-            <Button href={destinations.cta.href} variant="dark">
-              {destinations.cta.label}
-            </Button>
-            <ArrowCircle href={destinations.cta.href} />
-          </>
+          <CtaButton href={destinations.cta.href} variant="dark">
+            {destinations.cta.label}
+          </CtaButton>
         }
       />
 
@@ -135,11 +132,15 @@ export function Destinations() {
               <span className="text-h3 block font-medium tracking-tight text-white">
                 {item.title}
               </span>
-              <span className="text-caption mt-1 block font-medium text-white/70">
-                {item.meta}
-              </span>
-              <span className="text-body mt-2 block max-w-[28ch] leading-snug text-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {item.description}
+              <span className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
+                <span className="overflow-hidden">
+                  <span className="text-caption mt-1 block font-medium text-white/70">
+                    {item.meta}
+                  </span>
+                  <span className="text-body mt-2 block max-w-[28ch] leading-snug text-white/80 lg:opacity-0 lg:transition-opacity lg:delay-100 lg:duration-400 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100">
+                    {item.description}
+                  </span>
+                </span>
               </span>
             </span>
           </a>
@@ -170,8 +171,12 @@ export function Destinations() {
                 <span className="text-h3 block font-medium text-white">
                   {item.title}
                 </span>
-                <span className="text-body mt-1 block max-w-[36ch] text-white/80">
-                  {item.description}
+                <span className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
+                  <span className="overflow-hidden">
+                    <span className="text-body mt-1 block max-w-[36ch] text-white/80 lg:opacity-0 lg:transition-opacity lg:delay-100 lg:duration-400 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100">
+                      {item.description}
+                    </span>
+                  </span>
                 </span>
               </span>
               <ArrowCircle as="span" light />

@@ -3,8 +3,7 @@
 import Image from "next/image";
 import type { SVGProps } from "react";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { EcoIcon, ExploreIcon, GroupsIcon } from "@/app/components/ui/icons";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { stays } from "@/app/lib/content/home";
@@ -83,12 +82,9 @@ export function Stays() {
         title={stays.title}
         description={stays.description}
         cta={
-          <>
-            <Button href={stays.cta.href} variant="dark">
-              {stays.cta.label}
-            </Button>
-            <ArrowCircle href={stays.cta.href} />
-          </>
+          <CtaButton href={stays.cta.href} variant="dark">
+            {stays.cta.label}
+          </CtaButton>
         }
       />
 

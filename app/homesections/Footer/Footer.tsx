@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { RevealHeading } from "@/app/components/ui/RevealHeading";
 import { brand, finalCta, footer } from "@/app/lib/content/home";
@@ -94,16 +94,17 @@ export function Footer() {
             {finalCta.description}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Button href={finalCta.primary.href} variant="inverse">
+            <CtaButton href={finalCta.primary.href} variant="inverse" arrowLight>
               {finalCta.primary.label}
-            </Button>
-            <Button
+            </CtaButton>
+            <CtaButton
               href={finalCta.secondary.href}
               variant="ghost"
-              className="border-white/35 text-white hover:border-white"
+              arrowLight
+              buttonClassName="border-white/35 text-white hover:border-white"
             >
               {finalCta.secondary.label}
-            </Button>
+            </CtaButton>
           </div>
 
           <div className="mt-16 grid w-full gap-10 border-t border-white/15 pt-10 lg:mt-24 lg:grid-cols-12">

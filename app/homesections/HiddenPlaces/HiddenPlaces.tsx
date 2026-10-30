@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { hiddenPlaces } from "@/app/lib/content/home";
 import {
@@ -229,10 +228,9 @@ export function HiddenPlaces() {
         title={hiddenPlaces.title}
         description={hiddenPlaces.description}
         cta={
-          <>
-            <Button href={hiddenPlaces.cta.href}>{hiddenPlaces.cta.label}</Button>
-            <ArrowCircle href={hiddenPlaces.cta.href} />
-          </>
+          <CtaButton href={hiddenPlaces.cta.href} variant="dark">
+            {hiddenPlaces.cta.label}
+          </CtaButton>
         }
       />
 

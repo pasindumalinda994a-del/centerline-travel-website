@@ -96,6 +96,24 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
+/* HowItWorks oversized outline step numbers */
+.step-outline-num {
+  font-size: clamp(4.5rem, 3rem + 8vw, 8rem);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2.25px var(--brand);
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+.step-outline-num--on-brand {
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.72);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

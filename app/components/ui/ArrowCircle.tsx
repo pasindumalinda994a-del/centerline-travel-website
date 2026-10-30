@@ -10,19 +10,32 @@ import {
   useGSAP,
 } from "@/app/lib/gsap";
 
-type ArrowCircleProps = ComponentProps<"a"> & {
-  light?: boolean;
-  /** Render as a span when nested inside another link */
-  as?: "a" | "span";
-};
+const arrowTones = {
+  brand: "bg-brand text-white",
+  slate: "bg-slate text-white",
+  foreground: "bg-foreground text-white",
+  white: "bg-white text-foreground",
+} as const;
+
+export type ArrowTone = keyof typeof arrowTones;
+
+type ArrowCircleProps = ComponentProps<"a"> &
+  ComponentProps<"button"> & {
+    light?: boolean;
+    /** Solid fill when not using the glass `light` style */
+    tone?: ArrowTone;
+    /** Render as a span when nested inside another link; button for form submits */
+    as?: "a" | "span" | "button";
+  };
 
 export function ArrowCircle({
   light = false,
+  tone = "brand",
   className = "",
   as: Tag = "a",
   ...props
 }: ArrowCircleProps) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
@@ -71,17 +84,20 @@ export function ArrowCircle({
     { scope: ref },
   );
 
-  const { href, ...rest } = props;
+  const { href, type, ...rest } = props;
+  const interactive = Tag === "a" || Tag === "button";
+
   return (
     <Tag
-      ref={ref}
+      ref={ref as never}
       href={Tag === "a" ? href : undefined}
+      type={Tag === "button" ? (type ?? "button") : undefined}
       className={`group/arrow inline-flex size-11 shrink-0 items-center justify-center rounded-full will-change-transform ${
         light
           ? "bg-white/20 text-white backdrop-blur-md"
-          : "bg-foreground text-white"
+          : arrowTones[tone]
       } ${className}`}
-      aria-label={Tag === "a" ? "Open" : undefined}
+      aria-label={interactive ? "Open" : undefined}
       aria-hidden={Tag === "span" ? true : undefined}
       {...rest}
     >

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
-import { Button } from "@/app/components/ui/Button";
+import { CtaButton } from "@/app/components/ui/CtaButton";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { howItWorks } from "@/app/lib/content/home";
 import {
@@ -43,8 +43,8 @@ export function HowItWorks() {
         };
 
         gsap.to(card, {
-          scale: 1 - 0.07 * depth,
-          y: -18 * depth,
+          scale: 1 - 0.1 * depth,
+          y: -24 * depth,
           transformOrigin: "center top",
           ease: "none",
           scrollTrigger: { ...st },
@@ -77,10 +77,9 @@ export function HowItWorks() {
             title={howItWorks.title}
             description={howItWorks.description}
             cta={
-              <div className="mt-2 flex items-center gap-2">
-                <Button href={howItWorks.cta.href}>{howItWorks.cta.label}</Button>
-                <ArrowCircle href={howItWorks.cta.href} />
-              </div>
+              <CtaButton href={howItWorks.cta.href} variant="dark" className="mt-2">
+                {howItWorks.cta.label}
+              </CtaButton>
             }
           />
         </div>
@@ -92,37 +91,64 @@ export function HowItWorks() {
               <article
                 key={step.index}
                 data-step-card
-                className={`sticky top-24 h-[clamp(240px,36svh,360px)] overflow-hidden rounded-xl border will-change-transform lg:top-32 ${
+                className={`relative sticky top-24 h-[clamp(280px,42svh,420px)] overflow-hidden rounded-xl border shadow-[0_12px_40px_-28px_rgba(42,49,59,0.35)] will-change-transform lg:top-32 ${
                   isLast
                     ? "border-brand bg-brand text-white"
                     : "border-line bg-surface"
                 }`}
               >
+                {/* Left accent rail */}
+                <span
+                  aria-hidden
+                  className={`absolute inset-y-0 left-0 w-[3px] ${
+                    isLast ? "bg-white/35" : "bg-brand"
+                  }`}
+                />
+
+                {isLast ? (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -bottom-24 h-72 w-72 rounded-full bg-white/[0.06]"
+                  />
+                ) : null}
+
                 <div
                   data-step-face
-                  className="flex h-full flex-col justify-between p-7 sm:p-8"
+                  className="relative flex h-full flex-col justify-between p-7 pl-8 sm:p-8 sm:pl-9"
                 >
-                  <div className="flex items-start justify-between gap-6">
+                  <div className="relative z-10 max-w-[28ch]">
+                    <p
+                      className={`text-eyebrow mb-3 font-medium tracking-[0.18em] uppercase ${
+                        isLast ? "text-white/55" : "text-muted"
+                      }`}
+                    >
+                      Step {step.index}
+                    </p>
                     <h3 className="text-h3 font-medium tracking-tight">
                       {step.title}
                     </h3>
-                    <span
-                      className={`text-stat leading-none font-medium tracking-tight ${
-                        isLast ? "text-white/60" : "text-accent"
-                      }`}
-                    >
-                      {step.index}
-                    </span>
                   </div>
-                  <div className="flex items-end justify-between gap-6">
+
+                  <span
+                    aria-hidden
+                    className={`step-outline-num absolute right-3 bottom-2 z-[1] sm:right-5 sm:bottom-3 ${
+                      isLast ? "step-outline-num--on-brand" : ""
+                    }`}
+                  >
+                    {step.index}
+                  </span>
+
+                  <div className="relative z-10 flex items-end justify-between gap-6">
                     <p
-                      className={`text-body max-w-[44ch] leading-relaxed ${
+                      className={`text-body max-w-[36ch] leading-relaxed ${
                         isLast ? "text-white/80" : "text-muted"
                       }`}
                     >
                       {step.description}
                     </p>
-                    {isLast ? <ArrowCircle href={howItWorks.cta.href} light /> : null}
+                    {isLast ? (
+                      <ArrowCircle href={howItWorks.cta.href} light />
+                    ) : null}
                   </div>
                 </div>
               </article>
