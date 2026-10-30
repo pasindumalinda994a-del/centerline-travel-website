@@ -117,7 +117,7 @@ export function HowItWorks() {
                     >
                       Step {step.index}
                     </p>
-                    <h3 className="text-h3 font-medium tracking-tight">
+                    <h3 className="text-h2 leading-[1.05] font-medium tracking-[-0.03em]">
                       {step.title}
                     </h3>
                   </div>

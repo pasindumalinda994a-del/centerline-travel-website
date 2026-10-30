@@ -122,11 +122,7 @@ export function Destinations() {
               <MetaPill>{item.tag}</MetaPill>
             </span>
             <span className="absolute top-4 right-4">
-              <ArrowCircle
-                as="span"
-                light
-                className="transition-colors duration-300 group-hover:bg-brand group-hover:backdrop-blur-none"
-              />
+              <ArrowCircle as="span" light />
             </span>
             <span className="absolute inset-x-0 bottom-0 block p-5">
               <span className="text-h3 block font-medium tracking-tight text-white">

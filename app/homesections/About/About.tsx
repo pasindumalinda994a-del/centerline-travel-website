@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { CountUp } from "@/app/components/ui/CountUp";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
@@ -154,6 +155,9 @@ export function About() {
             className="object-cover will-change-transform"
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
+          <span className="absolute top-4 right-4 z-10">
+            <ArrowCircle as="span" light />
+          </span>
         </div>
 
         <div data-about-col className="flex flex-col gap-6 lg:col-span-4">
@@ -195,10 +199,12 @@ export function About() {
       <div className="mt-16 grid grid-cols-2 gap-8 border-t border-line pt-12 lg:mt-24 lg:grid-cols-4 lg:pt-14">
         {about.statsStrip.map((stat) => (
           <div key={stat.label} data-strip-item className="text-center">
-            <p className="text-h2 leading-none font-medium tracking-[-0.02em] text-foreground">
+            <p className="display-accent display-accent--md text-foreground">
               <CountUp value={stat.value} />
             </p>
-            <p className="text-caption mt-2 font-medium text-muted">{stat.label}</p>
+            <p className="text-caption mt-3 font-medium tracking-[0.04em] text-muted uppercase">
+              {stat.label}
+            </p>
           </div>
         ))}
       </div>
