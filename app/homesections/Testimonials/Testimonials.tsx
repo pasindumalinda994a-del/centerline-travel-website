@@ -178,10 +178,7 @@ export function Testimonials() {
                 className="flex-1 rounded-xl border border-line bg-surface p-6"
               >
                 <Stars />
-                <p className="text-body mt-3 font-medium tracking-tight">
-                  {review.title}
-                </p>
-                <blockquote className="text-body mt-2 leading-relaxed text-muted">
+                <blockquote className="text-body mt-3 leading-relaxed text-muted">
                   {review.copy}
                 </blockquote>
                 <figcaption className="mt-4 flex items-center gap-3">

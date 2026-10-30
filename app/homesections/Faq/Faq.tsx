@@ -36,6 +36,7 @@ export function Faq() {
               const row = message.parentElement as HTMLElement;
               const typing = message.querySelector<HTMLElement>("[data-typing]");
               const copy = message.querySelectorAll<HTMLElement>("[data-faq-copy]");
+              const avatar = row.querySelector<HTMLElement>("[data-faq-avatar]");
 
               const expandedWidth = message.offsetWidth;
               message.style.width = `${expandedWidth}px`;
@@ -50,6 +51,9 @@ export function Faq() {
                 padding: 0,
                 scale: 0,
               });
+              if (avatar) {
+                gsap.set(avatar, { scale: 0, opacity: 0 });
+              }
 
               let collapseWhenDone = false;
 
@@ -59,6 +63,18 @@ export function Faq() {
                 duration: 0.3,
                 ease: "power2.out",
               });
+              if (avatar) {
+                enterTimeline.to(
+                  avatar,
+                  {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  },
+                  "<",
+                );
+              }
 
               const expandTimeline = gsap.timeline({
                 paused: true,
@@ -175,43 +191,72 @@ export function Faq() {
         </div>
 
         <div className="flex flex-col gap-5 lg:col-span-7" aria-label="Frequently asked questions">
-          {faq.items.map((item) => (
-            <div key={item.question} className="contents">
-              {/* Question bubble — traveler side */}
-              <div className="flex justify-end">
-                <div
-                  data-faq-message
-                  className="relative max-w-[440px] origin-bottom-right rounded-xl bg-brand px-7 py-6 text-white"
-                >
-                  <span data-typing className="typing-indicator" aria-hidden>
-                    <span />
-                    <span />
-                    <span />
-                  </span>
-                  <p data-faq-copy className="text-body leading-relaxed font-medium">
-                    {item.question}
-                  </p>
-                </div>
-              </div>
+          {faq.items.map((item, index) => {
+            const travelerAvatar =
+              faq.travelerAvatars[index % faq.travelerAvatars.length];
 
-              {/* Answer bubble — Centreline side */}
-              <div className="flex justify-start">
-                <div
-                  data-faq-message
-                  className="relative max-w-[520px] origin-bottom-left rounded-xl border border-line bg-surface px-7 py-6"
-                >
-                  <span data-typing className="typing-indicator text-slate" aria-hidden>
-                    <span />
-                    <span />
-                    <span />
+            return (
+              <div key={item.question} className="contents">
+                {/* Question bubble — traveler side */}
+                <div className="flex items-end justify-end gap-3">
+                  <div
+                    data-faq-message
+                    className="relative max-w-[440px] origin-bottom-right rounded-xl bg-brand px-7 py-6 text-white"
+                  >
+                    <span data-typing className="typing-indicator" aria-hidden>
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <p data-faq-copy className="text-body leading-relaxed font-medium">
+                      {item.question}
+                    </p>
+                  </div>
+                  <span
+                    data-faq-avatar
+                    className="relative size-9 shrink-0 overflow-hidden rounded-full sm:size-10"
+                  >
+                    <Image
+                      src={travelerAvatar}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
                   </span>
-                  <p data-faq-copy className="text-body leading-relaxed text-foreground/90">
-                    {item.answer}
-                  </p>
+                </div>
+
+                {/* Answer bubble — Centreline side */}
+                <div className="flex items-end justify-start gap-3">
+                  <span
+                    data-faq-avatar
+                    className="relative size-9 shrink-0 overflow-hidden rounded-full bg-slate sm:size-10"
+                  >
+                    <Image
+                      src={faq.teamAvatar}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </span>
+                  <div
+                    data-faq-message
+                    className="relative max-w-[520px] origin-bottom-left rounded-xl border border-line bg-surface px-7 py-6"
+                  >
+                    <span data-typing className="typing-indicator text-slate" aria-hidden>
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <p data-faq-copy className="text-body leading-relaxed text-foreground/90">
+                      {item.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -94,16 +94,8 @@ export function Footer() {
             {finalCta.description}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <CtaButton href={finalCta.primary.href} variant="inverse" arrowLight>
+            <CtaButton href={finalCta.primary.href} variant="inverse">
               {finalCta.primary.label}
-            </CtaButton>
-            <CtaButton
-              href={finalCta.secondary.href}
-              variant="ghost"
-              arrowLight
-              buttonClassName="border-white/35 text-white hover:border-white"
-            >
-              {finalCta.secondary.label}
             </CtaButton>
           </div>
 

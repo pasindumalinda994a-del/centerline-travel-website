@@ -367,21 +367,18 @@ export const testimonials = {
   },
   reviews: [
     {
-      title: "Every step felt worth it",
       copy: "The route was stunning, the guide knew every hidden viewpoint, and the small group made it feel less like a tour and more like an adventure with friends.",
       name: "Sofia Williams",
       place: "Southern Coast Loop",
       avatar: "/images/home/figma/testimonial-avatar-1.jpg",
     },
     {
-      title: "Memories that stayed with me",
       copy: "Watching the sunrise from the summit was unforgettable, but what made the trip special was the people. Even solo travelers felt part of the group from day one.",
       name: "Liam Carter",
       place: "Knuckles Range",
       avatar: "/images/home/figma/testimonial-avatar-3.jpg",
     },
     {
-      title: "Smooth from start to finish",
       copy: "From pickup to the last sunset — organized, safe, and full of places we would never have found on our own. Already planning the next trip.",
       name: "Daniel K.",
       place: "Cultural Triangle",
@@ -467,6 +464,12 @@ export const faq = {
   title: "Everything You Need to Know\n*Before Your Journey*",
   description:
     "From booking to what to pack — the questions travelers ask us most, answered.",
+  travelerAvatars: [
+    "/images/home/figma/testimonial-avatar-1.jpg",
+    "/images/home/figma/testimonial-avatar-3.jpg",
+    "/images/home/figma/testimonial-avatar-4.jpg",
+  ],
+  teamAvatar: "/images/logo.png",
   sideCard: {
     title: "Didn't see your question?",
     description: "Our team is here to help — just reach out and we'll reply shortly.",
@@ -508,7 +511,6 @@ export const finalCta = {
   description:
     "Find the places, people, and experiences that make Sri Lanka more than a destination.",
   primary: { href: "#destinations", label: "Explore Sri Lanka" },
-  secondary: { href: "#about", label: "Our Story" },
   image: "/images/home/figma/hero-bg.jpg",
   watermark: "Centreline",
 } as const;
