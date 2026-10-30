@@ -121,12 +121,8 @@ export function Rentals() {
               <span className="absolute top-4 left-4">
                 <MetaPill variant="earth">{item.price}</MetaPill>
               </span>
-              <span className="absolute top-4 right-4">
-                <ArrowCircle
-                  as="span"
-                  light
-                  className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
+              <span className="absolute top-4 right-4 z-10">
+                <ArrowCircle as="span" light />
               </span>
               <span className="absolute inset-x-0 bottom-0 block p-5">
                 <span className="text-h3 block font-medium text-white">
@@ -146,12 +142,12 @@ export function Rentals() {
           >
             <Eyebrow light>All Rentals</Eyebrow>
             <span>
-              <span className="text-h3 block max-w-[12ch] leading-tight font-medium tracking-tight text-white">
+              <span className="text-h2 block max-w-[12ch] leading-tight font-medium tracking-tight text-white">
                 Everything your route needs
               </span>
-              <span className="text-body mt-4 inline-flex items-center gap-3 font-medium text-white">
-                <ArrowCircle as="span" light />
+              <span className="text-body mt-4 flex w-full items-center justify-between gap-3 font-medium text-white">
                 See all rentals
+                <ArrowCircle as="span" light />
               </span>
             </span>
           </a>

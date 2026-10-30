@@ -68,7 +68,8 @@ export function SearchBar() {
         <CtaButton
           as="button"
           type="submit"
-          className="col-span-2 justify-start"
+          className="col-span-2 w-full"
+          buttonClassName="min-w-0 flex-1"
         >
           Explore Now
         </CtaButton>

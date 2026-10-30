@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
@@ -72,6 +73,9 @@ export function LocalGuides() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate/90 via-slate/20 to-transparent" />
+              <span className="absolute top-4 right-4 z-10">
+                <ArrowCircle as="span" light />
+              </span>
             </div>
 
             <div className="absolute inset-x-0 bottom-0 p-6">
