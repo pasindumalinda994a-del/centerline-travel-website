@@ -105,13 +105,6 @@ export function HowItWorks() {
                   }`}
                 />
 
-                {isLast ? (
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-16 -bottom-24 h-72 w-72 rounded-full bg-white/[0.06]"
-                  />
-                ) : null}
-
                 <div
                   data-step-face
                   className="relative flex h-full flex-col justify-between p-7 pl-8 sm:p-8 sm:pl-9"
@@ -131,8 +124,8 @@ export function HowItWorks() {
 
                   <span
                     aria-hidden
-                    className={`step-outline-num absolute right-3 bottom-2 z-[1] sm:right-5 sm:bottom-3 ${
-                      isLast ? "step-outline-num--on-brand" : ""
+                    className={`display-accent display-accent--lg absolute top-2 right-3 z-[1] -mt-[0.08em] sm:top-3 sm:right-5 ${
+                      isLast ? "text-white/15" : "text-foreground/10"
                     }`}
                   >
                     {step.index}

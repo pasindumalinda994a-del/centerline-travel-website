@@ -119,8 +119,8 @@ export function Experiences() {
                     className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
                 </span>
-                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6">
-                  <span>
+                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 sm:gap-6">
+                  <span className="relative z-[1] min-w-0">
                     <span className="text-h3 block font-medium text-white">
                       {item.title}
                     </span>
@@ -128,11 +128,11 @@ export function Experiences() {
                       {item.description}
                     </span>
                   </span>
-                  <span className="hidden text-right sm:block">
-                    <span className="text-h2 block leading-none font-medium text-white">
+                  <span className="relative hidden shrink-0 text-right sm:block">
+                    <span className="display-accent display-accent--md block text-white/90">
                       {item.stat}
                     </span>
-                    <span className="text-caption mt-1 block text-white/70">
+                    <span className="text-caption mt-1.5 block tracking-[0.04em] text-white/65 uppercase">
                       {item.statLabel}
                     </span>
                   </span>

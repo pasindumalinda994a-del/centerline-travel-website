@@ -142,7 +142,7 @@ export function Footer() {
           <p
             data-watermark
             aria-hidden="true"
-            className="text-display pointer-events-none mt-10 -mb-[0.22em] w-full text-center leading-[0.85] font-medium tracking-[-0.04em] text-white/15 select-none lg:mt-14"
+            className="display-accent display-accent--xl mt-10 -mb-[0.22em] w-full text-center text-white/15 lg:mt-14"
           >
             {finalCta.watermark}
           </p>
