@@ -83,7 +83,7 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 flex h-full min-w-0 flex-col justify-between px-5 py-5 md:px-10 lg:px-14 lg:py-8">
+        <div className="relative z-10 flex h-full min-w-0 flex-col justify-between px-5 pt-3 pb-5 md:px-10 lg:px-14 lg:pt-5 lg:pb-8">
           <HeroNav />
 
           <div className="grid grid-cols-1 items-end gap-8 pb-2 lg:grid-cols-12 lg:gap-10">

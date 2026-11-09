@@ -22,14 +22,14 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-background/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 px-3 pt-1.5 sm:px-4 sm:pt-2">
       <nav
-        className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-3.5 sm:px-6 lg:px-10"
+        className="mx-auto grid w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-line/80 bg-white px-3 py-2 shadow-[0_8px_28px_rgba(42,49,59,0.08)] sm:px-4"
         aria-label="Primary"
       >
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-2.5"
+          className="col-start-1 flex shrink-0 items-center justify-self-start gap-2.5"
           aria-label="Centreline Tours home"
         >
           <Image
@@ -42,20 +42,20 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
           <span className="text-body font-medium text-foreground">Centreline</span>
         </Link>
 
-        <div className="flex shrink-0 items-center gap-4 sm:gap-6">
-          <ul className="hidden items-center gap-6 lg:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-body font-medium text-foreground/80 transition-opacity hover:opacity-70"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <ul className="col-start-2 hidden items-center justify-self-center gap-6 lg:flex">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="text-body font-medium text-foreground/75 transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
+        <div className="col-start-3 flex shrink-0 items-center justify-self-end gap-4 sm:gap-6">
           <div className="relative lg:hidden">
             <button
               type="button"
@@ -85,6 +85,15 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
                 ))}
                 <li>
                   <Link
+                    href="/#become-a-host"
+                    className="text-body block px-4 py-2 font-medium text-foreground hover:bg-background"
+                    onClick={() => setOpen(false)}
+                  >
+                    Become a Host
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/explore"
                     className="text-body block px-4 py-2 font-medium text-brand hover:bg-background"
                     onClick={() => setOpen(false)}
@@ -96,6 +105,12 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
             ) : null}
           </div>
 
+          <Link
+            href="/#become-a-host"
+            className="text-body hidden font-medium text-foreground/75 transition-colors hover:text-foreground xl:inline"
+          >
+            Become a Host
+          </Link>
           <div className="hidden sm:block">
             <CtaButton
               href="/explore"

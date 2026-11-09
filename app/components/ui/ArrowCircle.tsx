@@ -24,6 +24,11 @@ type ArrowCircleProps = ComponentProps<"a"> &
     light?: boolean;
     /** Solid fill when not using the glass `light` style */
     tone?: ArrowTone;
+    /**
+     * Icon-only surface for CTA content overlay — no fill/magnetic;
+     * parent paints the gooey blob behind it.
+     */
+    bare?: boolean;
     /** Render as a span when nested inside another link; button for form submits */
     as?: "a" | "span" | "button";
   };
@@ -31,6 +36,7 @@ type ArrowCircleProps = ComponentProps<"a"> &
 export function ArrowCircle({
   light = false,
   tone = "brand",
+  bare = false,
   className = "",
   as: Tag = "a",
   ...props
@@ -41,7 +47,7 @@ export function ArrowCircle({
     () => {
       registerGsap();
       const el = ref.current;
-      if (!el || prefersReducedMotion()) return;
+      if (!el || bare || prefersReducedMotion()) return;
       if (!window.matchMedia("(hover: hover)").matches) return;
 
       let centerX = 0;
@@ -81,29 +87,33 @@ export function ArrowCircle({
         el.removeEventListener("mouseleave", onLeave);
       };
     },
-    { scope: ref },
+    { scope: ref, dependencies: [bare] },
   );
 
   const { href, type, ...rest } = props;
   const interactive = Tag === "a" || Tag === "button";
+
+  const surface = bare
+    ? "bg-transparent"
+    : light
+      ? "bg-white/20 text-white backdrop-blur-md"
+      : arrowTones[tone];
 
   return (
     <Tag
       ref={ref as never}
       href={Tag === "a" ? href : undefined}
       type={Tag === "button" ? (type ?? "button") : undefined}
-      className={`group/arrow inline-flex size-11 shrink-0 items-center justify-center rounded-full will-change-transform ${
-        light
-          ? "bg-white/20 text-white backdrop-blur-md"
-          : arrowTones[tone]
-      } ${className}`}
+      className={`group/arrow inline-flex size-11 shrink-0 items-center justify-center rounded-full ${
+        bare ? "" : "will-change-transform "
+      }${surface} ${className}`}
       aria-label={interactive ? "Open" : undefined}
       aria-hidden={Tag === "span" ? true : undefined}
       {...rest}
     >
       <span className="relative size-4 overflow-hidden">
-        <ArrowOutwardIcon className="absolute inset-0 size-4 transition-transform duration-300 ease-out group-hover/arrow:translate-x-[130%] group-hover/arrow:-translate-y-[130%]" />
-        <ArrowOutwardIcon className="absolute inset-0 size-4 -translate-x-[130%] translate-y-[130%] transition-transform duration-300 ease-out group-hover/arrow:translate-x-0 group-hover/arrow:translate-y-0" />
+        <ArrowOutwardIcon className="absolute inset-0 size-4 transition-transform duration-300 ease-out group-hover/arrow:translate-x-[130%] group-hover/arrow:-translate-y-[130%] group-hover/cta:translate-x-[130%] group-hover/cta:-translate-y-[130%]" />
+        <ArrowOutwardIcon className="absolute inset-0 size-4 -translate-x-[130%] translate-y-[130%] transition-transform duration-300 ease-out group-hover/arrow:translate-x-0 group-hover/arrow:translate-y-0 group-hover/cta:translate-x-0 group-hover/cta:translate-y-0" />
       </span>
     </Tag>
   );

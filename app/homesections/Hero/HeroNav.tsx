@@ -2,22 +2,18 @@
 
 import Image from "next/image";
 import { CtaButton } from "@/app/components/ui/CtaButton";
-import { hero, navLinks } from "@/app/lib/content/home";
+import { navLinks } from "@/app/lib/content/home";
 import { MenuIcon } from "./icons";
 
 export function HeroNav() {
   return (
     <nav
-      className="relative flex w-full min-w-0 items-center justify-between"
+      className="relative grid w-full min-w-0 grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-line/80 bg-white px-3 py-2 shadow-[0_8px_28px_rgba(42,49,59,0.08)] sm:px-4"
       aria-label="Primary"
     >
-      <span className="text-caption pointer-events-none absolute left-1/2 hidden -translate-x-1/2 rounded-full bg-black/25 px-4 py-2 font-medium text-white/85 backdrop-blur-md xl:inline-flex">
-        {hero.basedIn}
-      </span>
-
       <a
         href="#top"
-        className="flex shrink-0 items-center gap-2.5"
+        className="col-start-1 flex shrink-0 items-center justify-self-start gap-2.5"
         aria-label="Centreline Tours home"
       >
         <Image
@@ -28,25 +24,25 @@ export function HeroNav() {
           className="size-9 rounded-full object-cover sm:size-10"
           priority
         />
-        <span className="text-body font-medium text-white">Centreline</span>
+        <span className="text-body font-medium text-foreground">Centreline</span>
       </a>
 
-      <div className="flex shrink-0 items-center gap-6">
-        <ul className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-body font-medium text-white/90 transition-opacity hover:opacity-70"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <ul className="col-start-2 hidden items-center justify-self-center gap-6 lg:flex">
+        {navLinks.map((link) => (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              className="text-body font-medium text-foreground/75 transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
 
+      <div className="col-start-3 flex shrink-0 items-center justify-self-end gap-6">
         <details className="relative lg:hidden">
-          <summary className="flex size-9 list-none items-center justify-center rounded-full text-white [&::-webkit-details-marker]:hidden">
+          <summary className="flex size-9 list-none items-center justify-center rounded-full text-foreground [&::-webkit-details-marker]:hidden">
             <MenuIcon className="size-5" />
             <span className="sr-only">Open menu</span>
           </summary>
@@ -61,9 +57,23 @@ export function HeroNav() {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="/#become-a-host"
+                className="text-body block px-4 py-2 font-medium text-foreground hover:bg-background"
+              >
+                Become a Host
+              </a>
+            </li>
           </ul>
         </details>
 
+        <a
+          href="/#become-a-host"
+          className="text-body hidden font-medium text-foreground/75 transition-colors hover:text-foreground xl:inline"
+        >
+          Become a Host
+        </a>
         <div className="hidden sm:block">
           <CtaButton href="/explore">
             Explore

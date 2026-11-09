@@ -12,7 +12,6 @@ export const navLinks = [
 ] as const;
 
 export const hero = {
-  basedIn: "Based in: Sri Lanka",
   eyebrow: "Sri Lanka — Est. Beyond",
   title: "Go Beyond the\n*Places You Know*",
   description:
