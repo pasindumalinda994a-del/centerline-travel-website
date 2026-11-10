@@ -15,6 +15,8 @@ const arrowTones = {
   slate: "bg-slate text-white",
   foreground: "bg-foreground text-white",
   white: "bg-white text-foreground",
+  /** Matches page/section `--background` */
+  background: "bg-background text-foreground",
 } as const;
 
 export type ArrowTone = keyof typeof arrowTones;

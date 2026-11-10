@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { formatPrice, type Guide } from "@/app/lib/content/explore";
 
@@ -12,9 +12,9 @@ export function GuideCard({ guide }: GuideCardProps) {
   return (
     <Link
       href={`/explore/guides/${guide.slug}`}
-      className="group relative overflow-hidden rounded-xl"
+      className="group relative rounded-xl"
     >
-      <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-xl sm:aspect-[4/5]">
         <Image
           src={guide.image}
           alt={guide.name}
@@ -23,10 +23,8 @@ export function GuideCard({ guide }: GuideCardProps) {
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate/90 via-slate/25 to-transparent" />
-        <span className="absolute top-4 right-4 z-10">
-          <ArrowCircle as="span" tone="white" />
-        </span>
       </div>
+      <CardCornerArrow />
 
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
         <Eyebrow light>{guide.role}</Eyebrow>

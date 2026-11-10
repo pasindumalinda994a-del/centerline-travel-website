@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
@@ -59,9 +59,9 @@ export function LocalGuides() {
           <article
             key={guide.name}
             data-guide-card
-            className="group relative overflow-hidden rounded-xl"
+            className="group relative rounded-xl"
           >
-            <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl sm:aspect-[4/5]">
               <Image
                 src={guide.image}
                 alt={guide.name}
@@ -70,10 +70,8 @@ export function LocalGuides() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate/90 via-slate/20 to-transparent" />
-              <span className="absolute top-4 right-4 z-10">
-                <ArrowCircle as="span" tone="white" />
-              </span>
             </div>
+            <CardCornerArrow />
 
             <div className="absolute inset-x-0 bottom-0 p-6">
               <Eyebrow light>{guide.role}</Eyebrow>

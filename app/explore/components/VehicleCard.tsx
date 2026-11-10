@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { formatPrice, type Vehicle } from "@/app/lib/content/explore";
 
@@ -12,22 +12,22 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
   return (
     <Link
       href={`/explore/vehicles/${vehicle.slug}`}
-      className="group relative block h-[360px] overflow-hidden rounded-xl sm:h-[400px]"
+      className="group relative block h-[360px] rounded-xl sm:h-[400px]"
     >
-      <Image
-        src={vehicle.images[0]}
-        alt={vehicle.title}
-        fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-        sizes="(max-width: 768px) 100vw, 33vw"
-      />
-      <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-transparent to-transparent" />
-      <span className="absolute top-4 left-4">
+      <span className="absolute inset-0 overflow-hidden rounded-xl">
+        <Image
+          src={vehicle.images[0]}
+          alt={vehicle.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-transparent to-transparent" />
+      </span>
+      <span className="absolute top-4 left-4 z-10">
         <MetaPill variant="earth">{formatPrice(vehicle.pricePerDay)}/day</MetaPill>
       </span>
-      <span className="absolute top-4 right-4 z-10">
-        <ArrowCircle as="span" tone="white" />
-      </span>
+      <CardCornerArrow />
       <span className="absolute inset-x-0 bottom-0 block p-5">
         <span className="text-h3 block font-medium text-white">{vehicle.title}</span>
         <span className="text-caption mt-1.5 block text-white/75">

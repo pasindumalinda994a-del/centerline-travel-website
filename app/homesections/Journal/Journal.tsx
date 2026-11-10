@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
@@ -62,24 +62,24 @@ export function Journal() {
               key={item.title}
               href="#journal"
               data-journal
-              className={`group relative min-h-[380px] overflow-hidden rounded-xl lg:min-h-[440px] ${
+              className={`group relative min-h-[380px] rounded-xl lg:min-h-[440px] ${
                 featured ? "sm:col-span-2 lg:col-span-2" : ""
               }`}
             >
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes={featured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-slate/20 to-transparent" />
-              <span className="absolute top-4 left-4">
+              <span className="absolute inset-0 overflow-hidden rounded-xl">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes={featured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-slate/20 to-transparent" />
+              </span>
+              <span className="absolute top-4 left-4 z-10">
                 <MetaPill variant="earth">{item.category}</MetaPill>
               </span>
-              <span className="absolute top-4 right-4">
-                <ArrowCircle as="span" tone="white" />
-              </span>
+              <CardCornerArrow />
               <span className="absolute inset-x-0 bottom-0 block p-6">
                 <span
                   className="text-h3 inline bg-gradient-to-r from-white to-white bg-[length:0%_1.5px] bg-left-bottom bg-no-repeat pb-1 leading-snug font-medium text-white transition-[background-size] duration-500 group-hover:bg-[length:100%_1.5px]"

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { CountUp } from "@/app/components/ui/CountUp";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
@@ -145,19 +145,19 @@ export function About() {
 
         <div
           data-about-col
-          className="group relative min-h-[420px] overflow-hidden rounded-xl lg:col-span-4 lg:min-h-full"
+          className="group relative min-h-[420px] rounded-xl lg:col-span-4 lg:min-h-full"
         >
-          <Image
-            data-about-image
-            src={about.image}
-            alt="Trail through Sri Lankan hills"
-            fill
-            className="object-cover will-change-transform"
-            sizes="(max-width: 1024px) 100vw, 33vw"
-          />
-          <span className="absolute top-4 right-4 z-10">
-            <ArrowCircle as="span" tone="white" />
+          <span className="absolute inset-0 overflow-hidden rounded-xl">
+            <Image
+              data-about-image
+              src={about.image}
+              alt="Trail through Sri Lankan hills"
+              fill
+              className="object-cover will-change-transform"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
           </span>
+          <CardCornerArrow />
         </div>
 
         <div data-about-col className="flex flex-col gap-6 lg:col-span-4">

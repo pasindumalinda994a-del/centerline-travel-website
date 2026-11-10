@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { MetaPill } from "@/app/components/ui/MetaPill";
@@ -105,22 +106,22 @@ export function Rentals() {
               key={item.title}
               href="#rentals"
               data-rental-card
-              className="group relative h-[400px] w-[280px] shrink-0 snap-start overflow-hidden rounded-xl sm:h-[440px] sm:w-[320px] lg:h-[48svh] lg:min-h-[400px] lg:w-[360px]"
+              className="group relative h-[400px] w-[280px] shrink-0 snap-start rounded-xl sm:h-[440px] sm:w-[320px] lg:h-[48svh] lg:min-h-[400px] lg:w-[360px]"
             >
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="360px"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-slate/80 via-transparent to-transparent" />
-              <span className="absolute top-4 left-4">
+              <span className="absolute inset-0 overflow-hidden rounded-xl">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="360px"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-slate/80 via-transparent to-transparent" />
+              </span>
+              <span className="absolute top-4 left-4 z-10">
                 <MetaPill variant="earth">{item.price}</MetaPill>
               </span>
-              <span className="absolute top-4 right-4 z-10">
-                <ArrowCircle as="span" tone="white" />
-              </span>
+              <CardCornerArrow />
               <span className="absolute inset-x-0 bottom-0 block p-5">
                 <span className="text-h3 block font-medium text-white">
                   {item.title}

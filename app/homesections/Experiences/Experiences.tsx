@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type { SVGProps } from "react";
 import { useRef } from "react";
-import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
+import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import {
   PetsIcon,
@@ -98,23 +98,19 @@ export function Experiences() {
                 key={item.title}
                 href="#experiences"
                 data-exp-tile
-                className="group relative min-h-[240px] overflow-hidden rounded-xl sm:col-span-2 lg:min-h-[260px]"
+                className="group relative min-h-[240px] rounded-xl sm:col-span-2 lg:min-h-[260px]"
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-slate/20 to-transparent" />
-                <span className="absolute top-5 right-5">
-                  <ArrowCircle
-                    as="span"
-                    tone="white"
-                    className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                <span className="absolute inset-0 overflow-hidden rounded-xl">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
+                  <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-slate/20 to-transparent" />
                 </span>
+                <CardCornerArrow />
                 <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 sm:gap-6">
                   <span className="relative z-[1] min-w-0">
                     <span className="text-h3 block font-medium text-white">
