@@ -8,6 +8,7 @@ import { EcoIcon, ExploreIcon, GroupsIcon } from "@/app/components/ui/icons";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { stays } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -54,11 +55,7 @@ export function Stays() {
       const cards = root.querySelectorAll("[data-stays-card]");
       if (cards.length) {
         gsap.from(cards, {
-          y: 64,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.12,
+          ...CARD_FADE,
           scrollTrigger: {
             trigger: root.querySelector("[data-stays-panel]"),
             start: "top 60%",

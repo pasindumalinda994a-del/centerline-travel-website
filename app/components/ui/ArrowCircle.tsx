@@ -112,8 +112,8 @@ export function ArrowCircle({
       {...rest}
     >
       <span className="relative size-4 overflow-hidden">
-        <ArrowOutwardIcon className="absolute inset-0 size-4 transition-transform duration-300 ease-out group-hover/arrow:translate-x-[130%] group-hover/arrow:-translate-y-[130%] group-hover/cta:translate-x-[130%] group-hover/cta:-translate-y-[130%]" />
-        <ArrowOutwardIcon className="absolute inset-0 size-4 -translate-x-[130%] translate-y-[130%] transition-transform duration-300 ease-out group-hover/arrow:translate-x-0 group-hover/arrow:translate-y-0 group-hover/cta:translate-x-0 group-hover/cta:translate-y-0" />
+        <ArrowOutwardIcon className="absolute inset-0 size-4 transition-transform duration-300 ease-out group-hover:translate-x-[130%] group-hover:-translate-y-[130%] group-hover/arrow:translate-x-[130%] group-hover/arrow:-translate-y-[130%] group-hover/cta:translate-x-[130%] group-hover/cta:-translate-y-[130%]" />
+        <ArrowOutwardIcon className="absolute inset-0 size-4 -translate-x-[130%] translate-y-[130%] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:translate-y-0 group-hover/cta:translate-x-0 group-hover/cta:translate-y-0" />
       </span>
     </Tag>
   );

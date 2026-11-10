@@ -14,6 +14,7 @@ import {
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { experiences } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -42,12 +43,7 @@ export function Experiences() {
       const tiles = root.querySelectorAll("[data-exp-tile]");
       if (tiles.length) {
         gsap.from(tiles, {
-          y: 36,
-          opacity: 0,
-          scale: 0.95,
-          duration: 0.85,
-          ease: "power3.out",
-          stagger: 0.08,
+          ...CARD_FADE,
           scrollTrigger: {
             trigger: root,
             start: "top 72%",
@@ -115,7 +111,7 @@ export function Experiences() {
                 <span className="absolute top-5 right-5">
                   <ArrowCircle
                     as="span"
-                    light
+                    tone="white"
                     className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
                 </span>

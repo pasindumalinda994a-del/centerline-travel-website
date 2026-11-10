@@ -185,7 +185,7 @@ export function Faq() {
                   {faq.sideCard.description}
                 </span>
               </span>
-              <ArrowCircle as="span" light />
+              <ArrowCircle as="span" tone="white" />
             </span>
           </a>
         </div>

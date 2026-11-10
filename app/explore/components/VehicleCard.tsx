@@ -26,7 +26,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         <MetaPill variant="earth">{formatPrice(vehicle.pricePerDay)}/day</MetaPill>
       </span>
       <span className="absolute top-4 right-4 z-10">
-        <ArrowCircle as="span" light />
+        <ArrowCircle as="span" tone="white" />
       </span>
       <span className="absolute inset-x-0 bottom-0 block p-5">
         <span className="text-h3 block font-medium text-white">{vehicle.title}</span>

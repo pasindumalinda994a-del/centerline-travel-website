@@ -73,7 +73,7 @@ export function StayCard({ stay }: StayCardProps) {
           </div>
           <span className="inline-flex items-center gap-2 text-body font-medium text-foreground">
             View stay
-            <ArrowCircle as="span" tone="brand" />
+            <ArrowCircle as="span" tone="white" />
           </span>
         </div>
       </div>

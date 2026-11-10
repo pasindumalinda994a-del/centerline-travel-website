@@ -93,7 +93,7 @@ export function HowItWorks() {
                 data-step-card
                 className={`relative sticky top-24 h-[clamp(280px,42svh,420px)] overflow-hidden rounded-xl border shadow-[0_12px_40px_-28px_rgba(42,49,59,0.35)] will-change-transform lg:top-32 ${
                   isLast
-                    ? "border-brand bg-brand text-white"
+                    ? "group border-brand bg-brand text-white"
                     : "border-line bg-surface"
                 }`}
               >
@@ -140,7 +140,7 @@ export function HowItWorks() {
                       {step.description}
                     </p>
                     {isLast ? (
-                      <ArrowCircle href={howItWorks.cta.href} light />
+                      <ArrowCircle href={howItWorks.cta.href} tone="white" />
                     ) : null}
                   </div>
                 </div>

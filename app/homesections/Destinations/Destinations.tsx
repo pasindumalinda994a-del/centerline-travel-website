@@ -8,6 +8,7 @@ import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { destinations } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -24,50 +25,22 @@ export function Destinations() {
       const root = rootRef.current;
       if (!root) return;
 
-      // Clip-wipe reveal for the main row, fade-up for the wide row
       const tiles = root.querySelectorAll("[data-tile]");
       if (tiles.length) {
-        gsap.fromTo(
-          tiles,
-          { clipPath: "inset(100% 0% 0% 0% round 1.75rem)", y: 32 },
-          {
-            clipPath: "inset(0% 0% 0% 0% round 1.75rem)",
-            y: 0,
-            duration: 1.1,
-            ease: "power3.out",
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: root,
-              start: "top 72%",
-              once: true,
-            },
+        gsap.from(tiles, {
+          ...CARD_FADE,
+          scrollTrigger: {
+            trigger: root,
+            start: "top 72%",
+            once: true,
           },
-        );
-        gsap.fromTo(
-          root.querySelectorAll("[data-tile-image]"),
-          { scale: 1.25 },
-          {
-            scale: 1,
-            duration: 1.4,
-            ease: "power3.out",
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: root,
-              start: "top 72%",
-              once: true,
-            },
-          },
-        );
+        });
       }
 
       const wide = root.querySelectorAll("[data-tile-wide]");
       if (wide.length) {
         gsap.from(wide, {
-          y: 40,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.12,
+          ...CARD_FADE,
           scrollTrigger: {
             trigger: wide[0],
             start: "top 85%",
@@ -119,10 +92,10 @@ export function Destinations() {
             </span>
             <span className="absolute inset-0 bg-gradient-to-t from-slate/80 via-slate/10 to-transparent" />
             <span className="absolute top-4 left-4">
-              <MetaPill>{item.tag}</MetaPill>
+              <MetaPill variant="earth">{item.tag}</MetaPill>
             </span>
             <span className="absolute top-4 right-4">
-              <ArrowCircle as="span" light />
+              <ArrowCircle as="span" tone="white" />
             </span>
             <span className="absolute inset-x-0 bottom-0 block p-5">
               <span className="text-h3 block font-medium tracking-tight text-white">
@@ -160,7 +133,7 @@ export function Destinations() {
             />
             <span className="absolute inset-0 bg-gradient-to-t from-slate/75 via-transparent to-transparent" />
             <span className="absolute top-4 left-4">
-              <MetaPill>{item.tag}</MetaPill>
+              <MetaPill variant="earth">{item.tag}</MetaPill>
             </span>
             <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
               <span>
@@ -175,7 +148,7 @@ export function Destinations() {
                   </span>
                 </span>
               </span>
-              <ArrowCircle as="span" light />
+              <ArrowCircle as="span" tone="white" />
             </span>
           </a>
         ))}

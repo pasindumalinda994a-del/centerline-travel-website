@@ -145,7 +145,7 @@ export function About() {
 
         <div
           data-about-col
-          className="relative min-h-[420px] overflow-hidden rounded-xl lg:col-span-4 lg:min-h-full"
+          className="group relative min-h-[420px] overflow-hidden rounded-xl lg:col-span-4 lg:min-h-full"
         >
           <Image
             data-about-image
@@ -156,7 +156,7 @@ export function About() {
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
           <span className="absolute top-4 right-4 z-10">
-            <ArrowCircle as="span" light />
+            <ArrowCircle as="span" tone="white" />
           </span>
         </div>
 

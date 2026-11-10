@@ -10,11 +10,14 @@ import { RevealHeading } from "@/app/components/ui/RevealHeading";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { testimonials } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
   useGSAP,
 } from "@/app/lib/gsap";
+
+type Review = (typeof testimonials.reviews)[number];
 
 function Stars() {
   return (
@@ -26,63 +29,119 @@ function Stars() {
   );
 }
 
+function ReviewCard({ review }: { review: Review }) {
+  return (
+    <figure
+      data-tst-review
+      className="flex shrink-0 flex-col overflow-hidden rounded-xl border border-line bg-surface p-5 lg:p-6"
+    >
+      <Stars />
+      <blockquote className="text-body mt-3 line-clamp-3 flex-1 leading-relaxed text-muted">
+        {review.copy}
+      </blockquote>
+      <figcaption className="mt-3 flex items-center gap-3">
+        <span className="relative size-9 shrink-0 overflow-hidden rounded-full">
+          <Image src={review.avatar} alt="" fill className="object-cover" sizes="36px" />
+        </span>
+        <span className="min-w-0">
+          <span className="text-caption block truncate font-medium">{review.name}</span>
+          <span className="text-caption block truncate text-muted">{review.place}</span>
+        </span>
+      </figcaption>
+    </figure>
+  );
+}
+
 export function Testimonials() {
   const rootRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
       registerGsap();
-      if (prefersReducedMotion()) return;
       const root = rootRef.current;
       if (!root) return;
 
-      const cols = root.querySelectorAll("[data-tst-col]");
-      if (cols.length) {
-        gsap.from(cols, {
-          y: 44,
-          opacity: 0,
-          duration: 0.95,
-          ease: "power3.out",
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: root,
-            start: "top 70%",
-            once: true,
-          },
-        });
+      const reduced = prefersReducedMotion();
+
+      if (!reduced) {
+        const cols = root.querySelectorAll("[data-tst-col]");
+        if (cols.length) {
+          gsap.from(cols, {
+            ...CARD_FADE,
+            scrollTrigger: {
+              trigger: root,
+              start: "top 70%",
+              once: true,
+            },
+          });
+        }
+
+        const founder = root.querySelector("[data-tst-founder]");
+        if (founder) {
+          gsap.from(founder, {
+            ...CARD_FADE,
+            scrollTrigger: {
+              trigger: founder,
+              start: "top 85%",
+              once: true,
+            },
+          });
+        }
       }
 
-      const reviews = root.querySelectorAll("[data-tst-review]");
-      if (reviews.length) {
-        gsap.from(reviews, {
-          y: 32,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.14,
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: root,
-            start: "top 70%",
-            once: true,
-          },
-        });
-      }
+      const viewport = root.querySelector<HTMLElement>("[data-review-marquee]");
+      const track = root.querySelector<HTMLElement>("[data-review-marquee-track]");
+      const firstCopy = root.querySelector<HTMLElement>("[data-review-marquee-copy]");
+      if (!viewport || !track || !firstCopy) return;
 
-      const founder = root.querySelector("[data-tst-founder]");
-      if (founder) {
-        gsap.from(founder, {
-          y: 36,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: founder,
-            start: "top 85%",
-            once: true,
-          },
+      let tween: gsap.core.Tween | undefined;
+
+      const layoutMarquee = () => {
+        const cards = root.querySelectorAll<HTMLElement>("[data-tst-review]");
+        if (!cards.length) return;
+
+        const styles = getComputedStyle(firstCopy);
+        const gap =
+          parseFloat(styles.rowGap || styles.gap) ||
+          (window.matchMedia("(min-width: 1024px)").matches ? 16 : 12);
+        const viewportH = viewport.clientHeight;
+        if (viewportH <= 0) return;
+
+        const cardH = (viewportH - gap * 2) / 3;
+        gsap.set(cards, { height: cardH });
+
+        if (reduced) {
+          gsap.set(track, { y: 0, clearProps: "transform" });
+          tween?.kill();
+          tween = undefined;
+          return;
+        }
+
+        // Force layout so offsetHeight reflects new card heights
+        const loopDistance = firstCopy.offsetHeight;
+        if (loopDistance <= 0) return;
+
+        tween?.kill();
+        gsap.set(track, { y: 0 });
+        tween = gsap.to(track, {
+          y: -loopDistance,
+          duration: 28,
+          ease: "none",
+          repeat: -1,
         });
-      }
+      };
+
+      layoutMarquee();
+
+      const ro = new ResizeObserver(() => {
+        layoutMarquee();
+      });
+      ro.observe(viewport);
+
+      return () => {
+        ro.disconnect();
+        tween?.kill();
+      };
     },
     { scope: rootRef },
   );
@@ -101,7 +160,7 @@ export function Testimonials() {
           description={testimonials.description}
         />
 
-        <div className="grid gap-3 lg:grid-cols-12 lg:gap-4">
+        <div className="grid gap-3 lg:grid-cols-12 lg:gap-4 lg:items-stretch">
           {/* Rating summary */}
           <div
             data-tst-col
@@ -169,29 +228,30 @@ export function Testimonials() {
             </figure>
           </div>
 
-          {/* Stacked reviews */}
-          <div data-tst-col className="flex flex-col gap-3 lg:col-span-4 lg:gap-4">
-            {testimonials.reviews.map((review) => (
-              <figure
-                key={review.name}
-                data-tst-review
-                className="flex-1 rounded-xl border border-line bg-surface p-6"
-              >
-                <Stars />
-                <blockquote className="text-body mt-3 leading-relaxed text-muted">
-                  {review.copy}
-                </blockquote>
-                <figcaption className="mt-4 flex items-center gap-3">
-                  <span className="relative size-9 overflow-hidden rounded-full">
-                    <Image src={review.avatar} alt="" fill className="object-cover" sizes="36px" />
-                  </span>
-                  <span>
-                    <span className="text-caption block font-medium">{review.name}</span>
-                    <span className="text-caption block text-muted">{review.place}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+          {/* Vertical review marquee */}
+          <div className="relative min-h-[480px] lg:col-span-4">
+            <div
+              data-review-marquee
+              className="absolute inset-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+            >
+              <div data-review-marquee-track className="flex flex-col will-change-transform">
+                {[0, 1].map((copy) => (
+                  <div
+                    key={copy}
+                    data-review-marquee-copy={copy === 0 ? true : undefined}
+                    className={`flex flex-col gap-3 pb-3 lg:gap-4 lg:pb-4${copy === 1 ? " motion-reduce:hidden" : " motion-reduce:pb-0"}`}
+                    aria-hidden={copy === 1 ? true : undefined}
+                  >
+                    {testimonials.reviews.map((review) => (
+                      <ReviewCard
+                        key={`${copy}-${review.name}`}
+                        review={review}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

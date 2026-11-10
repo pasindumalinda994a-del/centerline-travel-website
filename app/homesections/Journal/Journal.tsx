@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { ArrowCircle } from "@/app/components/ui/ArrowCircle";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { journal } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -23,11 +25,7 @@ export function Journal() {
       const cards = rootRef.current?.querySelectorAll("[data-journal]");
       if (!cards?.length) return;
       gsap.from(cards, {
-        y: 44,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.12,
+        ...CARD_FADE,
         scrollTrigger: {
           trigger: rootRef.current,
           start: "top 75%",
@@ -78,6 +76,9 @@ export function Journal() {
               <span className="absolute inset-0 bg-gradient-to-t from-slate/85 via-slate/20 to-transparent" />
               <span className="absolute top-4 left-4">
                 <MetaPill variant="earth">{item.category}</MetaPill>
+              </span>
+              <span className="absolute top-4 right-4">
+                <ArrowCircle as="span" tone="white" />
               </span>
               <span className="absolute inset-x-0 bottom-0 block p-6">
                 <span

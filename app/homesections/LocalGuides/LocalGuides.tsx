@@ -8,6 +8,7 @@ import { Eyebrow } from "@/app/components/ui/Eyebrow";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { localGuides } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -24,11 +25,7 @@ export function LocalGuides() {
       const cards = rootRef.current?.querySelectorAll("[data-guide-card]");
       if (!cards?.length) return;
       gsap.from(cards, {
-        y: 48,
-        opacity: 0,
-        duration: 0.95,
-        ease: "power3.out",
-        stagger: 0.12,
+        ...CARD_FADE,
         scrollTrigger: {
           trigger: rootRef.current,
           start: "top 72%",
@@ -74,7 +71,7 @@ export function LocalGuides() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate/90 via-slate/20 to-transparent" />
               <span className="absolute top-4 right-4 z-10">
-                <ArrowCircle as="span" light />
+                <ArrowCircle as="span" tone="white" />
               </span>
             </div>
 

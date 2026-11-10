@@ -24,7 +24,7 @@ export function GuideCard({ guide }: GuideCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate/90 via-slate/25 to-transparent" />
         <span className="absolute top-4 right-4 z-10">
-          <ArrowCircle as="span" light />
+          <ArrowCircle as="span" tone="white" />
         </span>
       </div>
 

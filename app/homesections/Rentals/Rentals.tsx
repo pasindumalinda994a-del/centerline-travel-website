@@ -9,6 +9,7 @@ import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
 import { rentals } from "@/app/lib/content/home";
 import {
+  CARD_FADE,
   gsap,
   prefersReducedMotion,
   registerGsap,
@@ -56,16 +57,12 @@ export function Rentals() {
         });
       });
 
-      // Mobile / tablet: simple fade-up of the cards
+      // Mobile / tablet: cinematic fade of the cards
       mm.add("(max-width: 1023px)", () => {
         const cards = root.querySelectorAll("[data-rental-card]");
         if (!cards.length) return;
         gsap.from(cards, {
-          y: 32,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.06,
+          ...CARD_FADE,
           scrollTrigger: {
             trigger: track,
             start: "top 80%",
@@ -122,7 +119,7 @@ export function Rentals() {
                 <MetaPill variant="earth">{item.price}</MetaPill>
               </span>
               <span className="absolute top-4 right-4 z-10">
-                <ArrowCircle as="span" light />
+                <ArrowCircle as="span" tone="white" />
               </span>
               <span className="absolute inset-x-0 bottom-0 block p-5">
                 <span className="text-h3 block font-medium text-white">
@@ -147,7 +144,7 @@ export function Rentals() {
               </span>
               <span className="text-body mt-4 flex w-full items-center justify-between gap-3 font-medium text-white">
                 See all rentals
-                <ArrowCircle as="span" light />
+                <ArrowCircle as="span" tone="white" />
               </span>
             </span>
           </a>

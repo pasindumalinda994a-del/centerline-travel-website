@@ -23,4 +23,12 @@ export function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+/** Shared homepage card entrance: opacity-only cinematic fade */
+export const CARD_FADE = {
+  opacity: 0,
+  duration: 1.6,
+  ease: "sine.out",
+  stagger: 0.18,
+} as const;
+
 export { gsap, useGSAP, ScrollTrigger };
