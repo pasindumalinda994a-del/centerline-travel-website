@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ExploreFooter } from "@/app/components/layout/ExploreFooter";
-import { SiteHeader } from "@/app/components/layout/SiteHeader";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { DetailGallery } from "@/app/explore/components/DetailGallery";
 import { EnquiryPanel } from "@/app/explore/components/EnquiryPanel";
@@ -40,9 +38,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
   const related = relatedVehicles(vehicle);
 
   return (
-    <div className="flex min-h-full flex-col bg-background">
-      <SiteHeader active="explore" />
-      <main className="mx-auto w-full max-w-[1400px] flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+    <main className="mx-auto w-full max-w-[1400px] flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
         <Link
           href="/explore?category=vehicles"
           className="text-caption font-medium text-brand transition-opacity hover:opacity-70"
@@ -120,8 +116,6 @@ export default async function VehicleDetailPage({ params }: PageProps) {
             </div>
           </section>
         ) : null}
-      </main>
-      <ExploreFooter />
-    </div>
+    </main>
   );
 }

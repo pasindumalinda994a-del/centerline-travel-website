@@ -6,7 +6,7 @@ import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { MetaPill } from "@/app/components/ui/MetaPill";
 import { SectionHeader } from "@/app/components/ui/SectionHeader";
-import { journal } from "@/app/lib/content/home";
+import { journal } from "@/app/lib/content/journal";
 import {
   CARD_FADE,
   gsap,
@@ -60,7 +60,7 @@ export function Journal() {
           return (
             <a
               key={item.title}
-              href="#journal"
+              href={item.href}
               data-journal
               className={`group relative min-h-[380px] rounded-xl lg:min-h-[440px] ${
                 featured ? "sm:col-span-2 lg:col-span-2" : ""

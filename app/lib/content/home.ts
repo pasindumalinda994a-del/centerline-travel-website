@@ -1,14 +1,15 @@
+import { destinationCards } from "@/app/lib/content/destinations";
+
 export const brand = {
   name: "Centreline Tours",
   tagline: "Discover Sri Lanka beyond the usual route.",
 } as const;
 
 export const navLinks = [
-  { href: "#destinations", label: "Destinations" },
-  { href: "#experiences", label: "Experiences" },
-  { href: "#guides", label: "Guides" },
-  { href: "#journal", label: "Journal" },
-  { href: "#about", label: "About" },
+  { href: "/destinations", label: "Destinations" },
+  { href: "/experiences", label: "Experiences" },
+  { href: "/journal", label: "Journal" },
+  { href: "/about", label: "About" },
 ] as const;
 
 export const hero = {
@@ -36,51 +37,8 @@ export const destinations = {
   title: "A Small Island With\n*Endless Places* to Discover",
   description:
     "Follow the coast, climb into the hills, wander through ancient cities, or disappear into the wild.",
-  cta: { href: "#destinations", label: "Explore All" },
-  items: [
-    {
-      title: "Southern Coast",
-      description: "Golden beaches, surf towns, seafood, and unforgettable sunsets.",
-      image: "/images/home/figma/dest-extra-05.jpg",
-      tag: "Coast",
-      meta: "12 routes",
-    },
-    {
-      title: "Hill Country",
-      description: "Misty mountains, tea country, waterfalls, and winding roads.",
-      image: "/images/home/figma/dest-extra-04.jpg",
-      tag: "Hills",
-      meta: "9 routes",
-    },
-    {
-      title: "Cultural Triangle",
-      description: "Ancient cities, sacred temples, and rock fortresses.",
-      image: "/images/home/figma/dest-hills.jpg",
-      tag: "Culture",
-      meta: "7 routes",
-    },
-    {
-      title: "Wildlife & Nature",
-      description: "National parks, rainforests, elephants, and leopards.",
-      image: "/images/home/figma/dest-wildlife.jpg",
-      tag: "Wildlife",
-      meta: "8 routes",
-    },
-    {
-      title: "Northern Sri Lanka",
-      description: "History, culture, lagoons, and quiet coastal roads.",
-      image: "/images/home/figma/dest-northern.jpg",
-      tag: "North",
-      meta: "5 routes",
-    },
-    {
-      title: "Beaches",
-      description: "From famous shores to secluded stretches few travelers ever find.",
-      image: "/images/home/figma/dest-cultural.jpg",
-      tag: "Coast",
-      meta: "14 routes",
-    },
-  ],
+  cta: { href: "/destinations", label: "Explore All" },
+  items: destinationCards,
 } as const;
 
 export const about = {
@@ -88,7 +46,7 @@ export const about = {
   title: "Discover the Sri Lanka\n*You Don't Find* on a Map",
   description:
     "Centreline Tours brings together destinations, hidden places, experiences, stays, guides, and rentals — so you can explore the island your way.",
-  cta: { href: "#about", label: "Our Story" },
+  cta: { href: "/about", label: "Our Story" },
   image: "/images/home/figma/about.jpg",
   stats: [
     { label: "Regions to Explore", value: "25+" },
@@ -187,7 +145,7 @@ export const experiences = {
   title: "What Makes the\n*Experience* Different",
   description:
     "Meet the people, taste the food, follow local trails, watch wildlife, and see the island through local eyes.",
-  cta: { href: "#experiences", label: "Browse All" },
+  cta: { href: "/experiences", label: "Browse All" },
   items: [
     {
       kind: "icon",
@@ -279,7 +237,7 @@ export const howItWorks = {
   title: "From Inspiration to\n*Your Next Adventure*",
   description:
     "Discover places, plan your route, connect with locals, and go — without the usual tourist trail.",
-  cta: { href: "#destinations", label: "Plan Your Trip" },
+  cta: { href: "/destinations", label: "Plan Your Trip" },
   steps: [
     {
       index: "01",
@@ -355,7 +313,7 @@ export const testimonials = {
       "100% local certified guides",
       "8+ years of island experience",
     ],
-    cta: { href: "#destinations", label: "Plan Your Trip" },
+    cta: { href: "/destinations", label: "Plan Your Trip" },
   },
   featured: {
     quote:
@@ -401,47 +359,6 @@ export const testimonials = {
     "/images/home/figma/dest-extra-05.jpg",
     "/images/home/figma/experiences-hero.jpg",
     "/images/home/figma/stays-hero.jpg",
-  ],
-} as const;
-
-export const journal = {
-  eyebrow: "Journal",
-  title: "Stories, Tips &\n*Trail Inspiration*",
-  description:
-    "Places worth visiting, hidden corners worth finding, and ideas for your next journey.",
-  cta: { href: "#journal", label: "View Journal" },
-  items: [
-    {
-      category: "Travel Guides",
-      title: "The Best Time to Visit Sri Lanka's Hill Country",
-      date: "8 min read",
-      image: "/images/home/figma/journal-1.jpg",
-      featured: true,
-    },
-    {
-      category: "Hidden Places",
-      title: "Quiet Waterfalls Beyond the Tourist Trail",
-      date: "6 min read",
-      image: "/images/home/figma/journal-3.jpg",
-    },
-    {
-      category: "Itineraries",
-      title: "A Coastal Road Trip Worth Taking Slowly",
-      date: "10 min read",
-      image: "/images/home/figma/journal-extra-02.jpg",
-    },
-    {
-      category: "Food & Culture",
-      title: "Where Locals Eat Along the Southern Coast",
-      date: "5 min read",
-      image: "/images/home/figma/journal-2.jpg",
-    },
-    {
-      category: "Wildlife",
-      title: "Dawn Safaris in Yala Without the Crowds",
-      date: "7 min read",
-      image: "/images/home/figma/journal-extra-01.jpg",
-    },
   ],
 } as const;
 

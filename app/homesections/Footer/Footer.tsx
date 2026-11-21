@@ -123,16 +123,28 @@ export function Footer() {
                 <div key={column.title}>
                   <Eyebrow light>{column.title}</Eyebrow>
                   <ul className="mt-4 space-y-2.5">
-                    {column.links.map((link) => (
-                      <li key={link}>
-                        <a
-                          href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                          className="text-body text-white/85 transition-opacity hover:opacity-60"
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ))}
+                    {column.links.map((link) => {
+                      const href =
+                        link === "Become a Host"
+                          ? "/become-host"
+                          : link === "Destinations"
+                            ? "/destinations"
+                            : link === "Experiences"
+                              ? "/experiences"
+                              : link === "Journal"
+                                ? "/journal"
+                                : `/#${link.toLowerCase().replace(/\s+/g, "-")}`;
+                      return (
+                        <li key={link}>
+                          <a
+                            href={href}
+                            className="text-body text-white/85 transition-opacity hover:opacity-60"
+                          >
+                            {link}
+                          </a>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
@@ -154,10 +166,10 @@ export function Footer() {
           © {new Date().getFullYear()} {brand.name}. All rights reserved.
         </p>
         <div className="flex gap-4">
-          <a href="#privacy" className="transition-colors hover:text-foreground">
+          <a href="/#privacy" className="transition-colors hover:text-foreground">
             Privacy Policy
           </a>
-          <a href="#terms" className="transition-colors hover:text-foreground">
+          <a href="/#terms" className="transition-colors hover:text-foreground">
             Terms & Conditions
           </a>
         </div>

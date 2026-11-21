@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ConditionalFooter } from "@/app/components/layout/ConditionalFooter";
+import { SiteHeader } from "@/app/components/layout/SiteHeader";
 import { SmoothScroll } from "@/app/components/providers/SmoothScroll";
 import "./globals.css";
 
@@ -20,7 +22,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${satoshi.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <div className="flex min-h-svh flex-col">
+            <SiteHeader />
+            <div className="flex flex-1 flex-col">{children}</div>
+            <ConditionalFooter />
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );

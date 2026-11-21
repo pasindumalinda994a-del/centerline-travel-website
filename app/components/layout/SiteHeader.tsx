@@ -2,29 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CtaButton } from "@/app/components/ui/CtaButton";
 import { MenuIcon } from "@/app/homesections/Hero/icons";
+import { navLinks } from "@/app/lib/content/home";
 
-const navLinks = [
-  { href: "/#destinations", label: "Destinations" },
-  { href: "/#experiences", label: "Experiences" },
-  { href: "/#guides", label: "Guides" },
-  { href: "/#journal", label: "Journal" },
-  { href: "/#about", label: "About" },
-] as const;
-
-type SiteHeaderProps = {
-  active?: "explore" | "home";
-};
-
-export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
+export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const onExplore = pathname.startsWith("/explore");
+  const onDestinations = pathname.startsWith("/destinations");
+  const onExperiences = pathname.startsWith("/experiences");
+  const onJournal = pathname.startsWith("/journal");
 
   return (
-    <header className="sticky top-0 z-40 px-3 pt-1.5 sm:px-4 sm:pt-2">
+    <header className="sticky top-0 z-40  px-3 pt-1.5 sm:px-4 sm:pt-2">
       <nav
-        className="mx-auto grid w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-line/80 bg-white px-3 py-2 shadow-[0_8px_28px_rgba(42,49,59,0.08)] sm:px-4"
+        className="mx-auto grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-line/80 bg-background px-3 py-2 shadow-[0_8px_28px_rgba(42,49,59,0.08)] sm:px-4"
         aria-label="Primary"
       >
         <Link
@@ -43,16 +38,28 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
         </Link>
 
         <ul className="col-start-2 hidden items-center justify-self-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-body font-medium text-foreground/75 transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const active =
+              (link.href === "/destinations" && onDestinations) ||
+              (link.href === "/experiences" && onExperiences) ||
+              (link.href === "/journal" && onJournal) ||
+              (link.href === "/about" && pathname.startsWith("/about"));
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`text-body font-medium transition-colors ${
+                    active
+                      ? "text-foreground"
+                      : "text-foreground/75 hover:text-foreground"
+                  }`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="col-start-3 flex shrink-0 items-center justify-self-end gap-4 sm:gap-6">
@@ -85,7 +92,7 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
                 ))}
                 <li>
                   <Link
-                    href="/#become-a-host"
+                    href="/become-host"
                     className="text-body block px-4 py-2 font-medium text-foreground hover:bg-background"
                     onClick={() => setOpen(false)}
                   >
@@ -106,7 +113,7 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
           </div>
 
           <Link
-            href="/#become-a-host"
+            href="/become-host"
             className="text-body hidden font-medium text-foreground/75 transition-colors hover:text-foreground xl:inline"
           >
             Become a Host
@@ -114,7 +121,7 @@ export function SiteHeader({ active = "explore" }: SiteHeaderProps) {
           <div className="hidden sm:block">
             <CtaButton
               href="/explore"
-              variant={active === "explore" ? "primary" : "dark"}
+              variant={onExplore ? "primary" : "dark"}
             >
               Explore
             </CtaButton>

@@ -96,7 +96,7 @@ export function Experiences() {
             return (
               <a
                 key={item.title}
-                href="#experiences"
+                href="/experiences"
                 data-exp-tile
                 className="group relative min-h-[240px] rounded-xl sm:col-span-2 lg:min-h-[260px]"
               >
@@ -137,7 +137,7 @@ export function Experiences() {
           return (
             <a
               key={item.title}
-              href="#experiences"
+              href="/experiences"
               data-exp-tile
               className="group flex min-h-[240px] flex-col justify-between rounded-xl border border-line bg-surface p-6 transition-colors hover:border-brand/30 lg:min-h-[260px]"
             >

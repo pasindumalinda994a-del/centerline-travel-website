@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { CardCornerArrow } from "@/app/components/ui/CardCornerArrow";
 import { CtaButton } from "@/app/components/ui/CtaButton";
@@ -75,9 +76,9 @@ export function Destinations() {
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         {featured.map((item) => (
-          <a
-            key={item.title}
-            href="#destinations"
+          <Link
+            key={item.slug}
+            href={`/destinations/${item.slug}`}
             data-tile
             className="group relative h-[420px] rounded-xl lg:h-[480px]"
           >
@@ -112,15 +113,15 @@ export function Destinations() {
                 </span>
               </span>
             </span>
-          </a>
+          </Link>
         ))}
       </div>
 
       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:mt-4 lg:gap-4">
         {rest.map((item) => (
-          <a
-            key={item.title}
-            href="#destinations"
+          <Link
+            key={item.slug}
+            href={`/destinations/${item.slug}`}
             data-tile-wide
             className="group relative h-[240px] rounded-xl lg:h-[280px]"
           >
@@ -150,7 +151,7 @@ export function Destinations() {
                 </span>
               </span>
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </section>

@@ -3,7 +3,6 @@ import { Destinations } from "@/app/homesections/Destinations/Destinations";
 import { Events } from "@/app/homesections/Events/Events";
 import { Experiences } from "@/app/homesections/Experiences/Experiences";
 import { Faq } from "@/app/homesections/Faq/Faq";
-import { Footer } from "@/app/homesections/Footer/Footer";
 import { Hero } from "@/app/homesections/Hero/Hero";
 import { HiddenPlaces } from "@/app/homesections/HiddenPlaces/HiddenPlaces";
 import { HowItWorks } from "@/app/homesections/HowItWorks/HowItWorks";
@@ -29,7 +28,6 @@ export default function Home() {
       <Journal />
       <Events />
       <Faq />
-      <Footer />
     </main>
   );
 }

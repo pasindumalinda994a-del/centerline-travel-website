@@ -1,6 +1,4 @@
 import { Suspense } from "react";
-import { ExploreFooter } from "@/app/components/layout/ExploreFooter";
-import { SiteHeader } from "@/app/components/layout/SiteHeader";
 import { ExploreClient } from "@/app/explore/ExploreClient";
 import { ListingSkeleton } from "@/app/explore/components/ListingSkeleton";
 import type { Metadata } from "next";
@@ -23,14 +21,10 @@ function ExploreFallback() {
 
 export default function ExplorePage() {
   return (
-    <div className="flex min-h-full flex-col bg-background">
-      <SiteHeader active="explore" />
-      <main className="flex-1">
-        <Suspense fallback={<ExploreFallback />}>
-          <ExploreClient />
-        </Suspense>
-      </main>
-      <ExploreFooter />
-    </div>
+    <main className="flex-1">
+      <Suspense fallback={<ExploreFallback />}>
+        <ExploreClient />
+      </Suspense>
+    </main>
   );
 }

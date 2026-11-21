@@ -11,7 +11,6 @@ import {
   useGSAP,
 } from "@/app/lib/gsap";
 import { HeroBackground } from "./HeroBackground";
-import { HeroNav } from "./HeroNav";
 import {
   LandscapeIcon,
   PetsIcon,
@@ -72,7 +71,7 @@ export function Hero() {
     <section
       id="top"
       ref={rootRef}
-      className="m-3 h-[calc(100svh-24px)] min-h-[720px] overflow-hidden rounded-2xl sm:m-4 sm:h-[calc(100svh-32px)]"
+      className="m-3 h-[calc(100svh-84px)] min-h-[640px] overflow-hidden rounded-2xl sm:m-4 sm:h-[calc(100svh-98px)]"
     >
       <div className="relative isolate h-full w-full overflow-hidden rounded-2xl">
         <div data-hero-media className="absolute inset-0 will-change-transform">
@@ -83,9 +82,7 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 flex h-full min-w-0 flex-col justify-between px-5 pt-3 pb-5 md:px-10 lg:px-14 lg:pt-5 lg:pb-8">
-          <HeroNav />
-
+        <div className="relative z-10 flex h-full min-w-0 flex-col justify-end px-5 pt-3 pb-5 md:px-10 lg:px-14 lg:pt-5 lg:pb-8">
           <div className="grid grid-cols-1 items-end gap-8 pb-2 lg:grid-cols-12 lg:gap-10">
             <div className="@container flex min-w-0 flex-col items-start gap-5 lg:col-span-7">
               <Eyebrow light data-hero-fade>
